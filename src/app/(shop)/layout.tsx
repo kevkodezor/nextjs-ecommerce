@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { inter } from '@/config/fonts';
 
 export const metadata: Metadata = {
-  title: 'ShopLayout',
+  title: 'Teslo Shop',
   description: 'Layout teslo shop',
 };
 
