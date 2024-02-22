@@ -16,12 +16,10 @@ export const ItemProduct = ({ product }:Props) => {
                 width={500}
                 height={500}
             />
-            <div className='p-4 flex flex-col bg-indigo-300'>
-                <Link href={`/product/${product.slug}`}>
-                    {product.title}
-                </Link>
+            <Link className='p-4 flex flex-col bg-indigo-300 hover:bg-indigo-200' href={`/product/${product.slug}`}>
+                {product.title}
                 <span className='font-bold'>$ {product.price}</span>
-            </div>
+            </Link>
         </div>
     )
 }
