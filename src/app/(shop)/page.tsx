@@ -1,10 +1,9 @@
-import { titleFont } from '@/config/fonts';
+import { Title } from '@/components';
 
 export default function Home() {
   return (
-    <div>
-      This is TesloShop
-      <div className={titleFont.className}>Shop</div>
-    </div>
+    <>
+    <Title title='Tienda' subtitle='Todos los productos' />
+    </>
   );
 }

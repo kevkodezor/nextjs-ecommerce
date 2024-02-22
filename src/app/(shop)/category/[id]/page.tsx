@@ -7,7 +7,7 @@ interface Props {
 export default function Category ({ params}:Props) {
     
     const { id } = params;
-    if (id === 'kids') {
+    if (id !== 'kids' || 'men' || 'women') {
         notFound();
     }
 
