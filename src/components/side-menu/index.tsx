@@ -1,18 +1,37 @@
 'use client'
 
-import Link from 'next/link'
-import { IoCloseOutline, IoLogInOutline, IoLogOutOutline, IoPeopleCircle, IoPersonOutline, IoSearchOutline, IoShirtOutline, IoTicketOutline } from 'react-icons/io5'
+import Link from 'next/link';
+import clsx from 'clsx';
+import {
+    IoCloseOutline, IoLogInOutline, IoLogOutOutline, 
+    IoPeopleCircle, IoPersonOutline, IoSearchOutline, 
+    IoShirtOutline, IoTicketOutline
+} from 'react-icons/io5';
+import { useUiStore } from '@/store';
 
 export const SideMenu = () => {
+
+    const isMenu = useUiStore(state => state.openMenu);
+    const menuClose = useUiStore(state => state.isClose);
+
     return (
         <>
-            <div className='fixed top-0 w-screen h-screen z-10 bg-black opacity-30' />
-            <div className='fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm' />
-            <nav className='fixed p-5 right-0 top-0 w-[30%] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300'>
+            {isMenu && (
+                <>
+                    <div className='fixed top-0 w-screen h-screen z-10 bg-black opacity-30' />
+                    <div className='fade-in fixed top-0 left-0 w-screen h-screen z-10 backdrop-filter backdrop-blur-sm' />
+                </>
+            )}
+
+            <nav className={
+                clsx('fixed p-5 right-0 top-0 w-[30%] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300', {
+                    'translate-x-full' : !isMenu
+                })
+            }>
                 <IoCloseOutline
                     size={30}
                     className='absolute top-5 right-5 cursor-pointer'
-                    onClick={() => {}}
+                    onClick={menuClose}
                 />
                 <div className='relative top-9'>
                     <IoSearchOutline size={20} className='absolute top-2 left-2' />
