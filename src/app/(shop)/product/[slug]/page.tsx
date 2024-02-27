@@ -1,6 +1,7 @@
-import { titleFont } from "@/config/fonts";
-import { initialData } from "@/seed";
-import { notFound } from "next/navigation";
+import { notFound } from 'next/navigation';
+import { titleFont } from '@/config/fonts';
+import { Selector } from '@/components';
+import { initialData } from '@/seed';
 
 interface Props {
     params: { slug: string; }
@@ -23,6 +24,8 @@ export default function ({ params }: Props) {
             <div className='col-span-1 gap-3 grid'>
                 <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product?.title}</h1>
                 <p className='text-lg'>$ {product?.price}</p>
+
+                <Selector selectSize={product.sizes[0]} available={product.sizes} />
 
                 <button className='btn-primary'>
                     Agregar al carrito
