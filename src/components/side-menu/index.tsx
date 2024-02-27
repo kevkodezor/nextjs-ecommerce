@@ -24,7 +24,7 @@ export const SideMenu = () => {
             )}
 
             <nav className={
-                clsx('fixed p-5 right-0 top-0 w-[30%] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300', {
+                clsx('fixed p-5 right-0 top-0 sm:w-full lg:w-[30%] h-screen bg-white z-20 shadow-2xl transform transition-all duration-300', {
                     'translate-x-full' : !isMenu
                 })
             }>
