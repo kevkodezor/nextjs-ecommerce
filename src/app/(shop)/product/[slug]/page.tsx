@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { titleFont } from '@/config/fonts';
-import { Counter, Selector } from '@/components';
+import { Counter, Selector, Slide } from '@/components';
 import { initialData } from '@/seed';
 
 interface Props {
@@ -18,10 +18,10 @@ export default function ({ params }: Props) {
         <div className='grid grid-cols-1 md:grid-cols-3 gap-3 lg:px-5'>
 
             <div className='col-span-1 md:col-span-2'>
-                <h1>Producto </h1>
+               <Slide title={product.title} images={product.images} />
             </div>
 
-            <div className='col-span-1 gap-3 grid'>
+            <div className='col-span-1 flex flex-col gap-3'>
                 <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product?.title}</h1>
                 <p className='text-lg'>$ {product?.price}</p>
 
