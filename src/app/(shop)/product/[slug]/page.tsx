@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { titleFont } from '@/config/fonts';
-import { Selector } from '@/components';
+import { Counter, Selector } from '@/components';
 import { initialData } from '@/seed';
 
 interface Props {
@@ -26,6 +26,7 @@ export default function ({ params }: Props) {
                 <p className='text-lg'>$ {product?.price}</p>
 
                 <Selector selectSize={product.sizes[0]} available={product.sizes} />
+                <Counter quantity={5} />
 
                 <button className='btn-primary'>
                     Agregar al carrito
