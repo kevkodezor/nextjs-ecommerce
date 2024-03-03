@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Counter, Title } from '@/components';
+import { Title } from '@/components';
 import { initialData } from '@/seed';
 import Image from 'next/image';
 
