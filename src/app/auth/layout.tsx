@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function AuthLayout ({ children }: Readonly<{children: React.ReactNode;}>) {
   return (
-    <div className={`${inter.className} min-h-screen`}>
+    <div className={`${inter.className} flex min-h-screen justify-center items-center`}>
       {children}
     </div>
   );

@@ -43,7 +43,7 @@ export default function Cart () {
                         ))}
                     </div>
 
-                    <div className='bg-white rounded-xl shadow-xl p-5'>
+                    <div className='bg-white rounded-xl shadow-xl p-5 h-fit'>
                         <h2 className='text-xl font-bold'>Detalle de la orden</h2>
                         <div className='grid grid-cols-2'>
                             <span>No. Productos</span>
