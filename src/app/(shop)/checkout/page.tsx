@@ -71,7 +71,7 @@ export default function Checkout () {
                         <div className='mt-5'>
                             <Link
                                 className='flex btn-primary justify-center'
-                                href='/order/1509'
+                                href='/orders/1509'
                             >
                                 Confirmar orden
                             </Link>

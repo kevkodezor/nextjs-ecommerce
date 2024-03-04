@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import { inter } from '@/config/fonts';
-import { SideMenu, TopMenu } from '@/components';
+import { Footer, SideMenu, TopMenu } from '@/components';
 
 export const metadata: Metadata = {
   title: 'Teslo Shop',
@@ -15,6 +15,7 @@ export default function ShopLayout ({ children }: {children: React.ReactNode;}) 
       <div className='m-5'>
         {children}
       </div>
+      <Footer />
     </main>
   );
 }

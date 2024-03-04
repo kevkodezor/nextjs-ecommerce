@@ -5,3 +5,4 @@ export { Title } from './ui/title';
 export { Selector } from './selector';
 export { Counter } from './counter';
 export { Slide } from './slide';
+export { Footer } from './ui/footer';
