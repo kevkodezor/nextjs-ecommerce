@@ -1,7 +1,8 @@
 import Link from 'next/link';
+import Image from 'next/image';
+import { redirect } from 'next/navigation';
 import { Counter, Title } from '@/components';
 import { initialData } from '@/seed';
-import Image from 'next/image';
 
 const productsCart = [
     initialData.products[0],
@@ -10,6 +11,9 @@ const productsCart = [
 ];
 
 export default function Cart () {
+
+    // redirect('/empty');
+
     return (
         <div className='flex justify-center items-center'>
             <div className='flex flex-col w-[1000px] rounded-md p-5'>
