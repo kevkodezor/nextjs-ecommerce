@@ -1,3 +1,9 @@
+## Descripción
+
+Actualización de proyecto con respecto a la ultima versión de NextJs. Se construyo una Ecommerce Page la cual se conecta
+a una DB en la nube [Mongo](https://www.mongodb.com/es). Así com también el uso de [Prisma](https://www.prisma.io/) para
+el modelado de datos, migración de esquemas y consulta a la base de datos. Cuenta con autenticación y multiples funcionalidades las cuales se podran apreciar colnando el proyecto o ingresando a al si url [URLporDefinir].
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
 ## Getting Started
