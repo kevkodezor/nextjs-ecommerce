@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { titleFont } from '@/config/fonts';
 import { Counter, Selector, Slide } from '@/components';
-import { initialData } from '@/seed';
+import { initialData } from '@/seed/seed';
 
 interface Props {
     params: { slug: string; }

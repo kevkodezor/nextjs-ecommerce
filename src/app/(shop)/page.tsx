@@ -1,6 +1,6 @@
 import { Title } from '@/components';
 import { ProductList } from '@/list';
-import { initialData } from '@/seed';
+import { initialData } from '@/seed/seed';
 
 const data = initialData.products;
 

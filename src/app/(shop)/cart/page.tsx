@@ -2,7 +2,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { redirect } from 'next/navigation';
 import { Counter, Title } from '@/components';
-import { initialData } from '@/seed';
+import { initialData } from '@/seed/seed';
 
 const productsCart = [
     initialData.products[0],

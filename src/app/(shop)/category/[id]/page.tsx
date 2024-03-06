@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Title } from '@/components';
-import { initialData } from '@/seed';
+import { initialData } from '@/seed/seed';
 import { Category } from '@/interfaces';
 import { ProductList } from '@/list';
 
