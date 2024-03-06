@@ -38,10 +38,11 @@ model Category {
 
 model Product {
     id          String   @id @default(uuid())
-    description String   @unique
+    title       String
+    description String
     inStock     Int
     price       Float    @default(0)
-    size        Size[]   @default([])
+    sizes        Size[]   @default([])
     slug        String   @unique
     tags        String[] @default([])
     gender      Gender
@@ -54,7 +55,7 @@ model Product {
 }
 
 model ProductImage {
-    id  String @id @default(uuid())
+    id  Int @id @default(autoincrement())
     url String
 	// Relations
     product   Product @relation(fields: [productId], references: [id])
