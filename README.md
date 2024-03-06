@@ -1,8 +1,9 @@
 ## Descripción
 
 Actualización de proyecto con respecto a la ultima versión de NextJs. Se construyo una Ecommerce Page la cual se conecta
-a una DB en la nube [Mongo](https://www.mongodb.com/es). Así com también el uso de [Prisma](https://www.prisma.io/) para
-el modelado de datos, migración de esquemas y consulta a la base de datos. Cuenta con autenticación y multiples funcionalidades las cuales se podran apreciar colnando el proyecto o ingresando al siguiente url [URLporDefinir].
+a una DB (Postgres) en la nube desplegada en [Vercel](https://vercel.com/). 
+
+Así com también el uso de [Prisma](https://www.prisma.io/) para el modelado de datos, migración de esquemas y consulta a la base de datos. Cuenta con autenticación y multiples funcionalidades las cuales se podran apreciar colnando el proyecto o ingresando al siguiente url [URLporDefinir].
 
 ## Correr en dev
 
@@ -10,7 +11,10 @@ el modelado de datos, migración de esquemas y consulta a la base de datos. Cuen
 2. Crear una copia de ```.env.template``` y renombrar a ```.env``` y cambiar las variables respectivas
 3. Instalar las dependencias con ```yarn install``` o ```npm install```
 4. Conectarse a la base de datos (de tu preferencia)
-5. Ejecutar las migraciones de Prisma ```npx prisma migrate dev```
+5. Ejecutar los siguientes comandos de Prisma
+```npx prisma init```
+```npx prisma migrate dev```
+```npx prisma generate```
 6. Ejecutar el comando ```yarn seed``` o ```npm run seed```
 7. Ejecutar el proyecto
 
