@@ -1,5 +1,5 @@
 export const generateItemsPagination = (currentPage:number, totalPage:number) => {
-    if (totalPage <= 7) return Array.from({ length: totalPage }, (_, i) => i + 1);
+    if (totalPage <= 5) return Array.from({ length: totalPage }, (_, i) => i + 1);
     if (currentPage <= 3) return [1, 2, 3, '...', totalPage - 1, totalPage];
     if (currentPage >= totalPage-2) return [1, 2, '...', totalPage - 2, totalPage - 1, totalPage];
     return [
