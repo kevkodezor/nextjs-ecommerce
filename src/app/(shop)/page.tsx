@@ -1,7 +1,9 @@
-import { Pagination, Title } from '@/components';
-import { ProductList } from '@/list';
-import { pagination } from '@/actions';
+export const revalidate = 60;
+
 import { redirect } from 'next/navigation';
+import { ProductList } from '@/list';
+import { Pagination, Title } from '@/components';
+import { pagination } from '@/actions';
 
 interface Props {
 	searchParams: {
