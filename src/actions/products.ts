@@ -1,13 +1,15 @@
 'use server'
 
 import prisma from '@/lib/prisma'
+import { Gender } from '@prisma/client';
 
 interface Options {
     page?: number;
-    take?: number
+    take?: number;
+    gender?: Gender;
 }
 
-export const pagination = async ({ page = 1, take = 12}:Options) => {
+export const pagination = async ({ page = 1, take = 12, gender }:Options) => {
 
     if (isNaN(Number(page))) page = 1;
     if (page < 1) page = 1;
@@ -22,10 +24,13 @@ export const pagination = async ({ page = 1, take = 12}:Options) => {
                     take: 2,
                     select: { url: true }
                 }
-            }
+            },
+            where: { gender: gender },
         });
         // 2. Total pages
-        const total = await prisma.product.count({});
+        const total = await prisma.product.count({
+            where: { gender: gender }
+        });
         const totalPage = Math.ceil(total/take);
 
         return {
