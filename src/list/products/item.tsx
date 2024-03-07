@@ -28,7 +28,7 @@ export const ItemProduct = ({ product }:Props) => {
                 className='p-4 flex flex-col bg-gray-200 hover:bg-gray-300'
                 href={`/product/${product.slug}`}
             >
-                <text className='text-md'>{product.title.length < 30 ? product.title : `${product.title.slice(0, 29)}...`}</text>
+                <text className='text-md'>{product.title.length < 30 ? product.title : `${product.title.slice(0, 25)}...`}</text>
                 <span className='font-bold'>$ {product.price}</span>
             </Link>
         </div>

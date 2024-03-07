@@ -1,4 +1,4 @@
-import { Title } from '@/components';
+import { Pagination, Title } from '@/components';
 import { ProductList } from '@/list';
 import { pagination } from '@/actions';
 import { redirect } from 'next/navigation';
@@ -20,6 +20,7 @@ export default async function Home({ searchParams }:Props) {
 		<>
 			<Title title='Tienda' subtitle='Todos los productos' />
 			<ProductList products={products} />
+			<Pagination totalPages={total} />
 		</>
 	);
 }
