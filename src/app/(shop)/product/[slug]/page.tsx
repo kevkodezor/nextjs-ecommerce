@@ -2,7 +2,7 @@ export const revalidate = 604800;
 
 import { notFound } from 'next/navigation';
 import { titleFont } from '@/config/fonts';
-import { Counter, Selector, Slide } from '@/components';
+import { Counter, Selector, Slide, StockLabel } from '@/components';
 import { getProductBySlug } from '@/actions';
 
 interface Props {
@@ -24,6 +24,7 @@ export default async function ProductBySlug ({ params }: Props) {
             </div>
 
             <div className='col-span-1 flex flex-col gap-3'>
+                <StockLabel slug={slug} />
                 <h1 className={`${titleFont.className} antialiased font-bold text-xl`}>{product?.title}</h1>
                 <p className='text-lg'>$ {product?.price}</p>
 
