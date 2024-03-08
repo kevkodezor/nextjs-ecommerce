@@ -25,11 +25,11 @@ export const pagination = async ({ page = 1, take = 12, gender }:Options) => {
                     select: { url: true }
                 }
             },
-            where: { gender: gender },
+            where: { gender },
         });
         // 2. Total pages
         const total = await prisma.product.count({
-            where: { gender: gender }
+            where: { gender }
         });
         const totalPage = Math.ceil(total/take);
 
@@ -43,5 +43,28 @@ export const pagination = async ({ page = 1, take = 12, gender }:Options) => {
         }
     } catch (error) {
         throw new Error('No se cargo la imagen')
+    }
+}
+
+export const getProductBySlug = async (slug:string) => {
+    try {
+        const productSlug = await prisma.product.findFirst({
+            include: {
+                ProductImage: {
+                    select: { url: true }
+                }
+            },
+            where: { slug }
+        });
+        
+        if (!productSlug) return null;
+
+        return {
+            ...productSlug,
+            images: productSlug.ProductImage.map(img => img.url)
+        }
+    } catch (error) {
+        console.log(error);
+        throw new Error('Error product by slug');
     }
 }

@@ -1,18 +1,20 @@
+export const revalidate = 604800;
+
 import { notFound } from 'next/navigation';
 import { titleFont } from '@/config/fonts';
 import { Counter, Selector, Slide } from '@/components';
-import { initialData } from '@/seed/seed';
+import { getProductBySlug } from '@/actions';
 
 interface Props {
     params: { slug: string; }
 }
 
-export default function ProductBySlug ({ params }: Props) {
+export default async function ProductBySlug ({ params }: Props) {
 
     const { slug } = params;
-    const product = initialData.products.find(product => product.slug === slug)!;
+    const product = await getProductBySlug(slug);
 
-    if (!product) notFound;
+    if (!product) notFound();
 
     return (
         <div className='grid grid-cols-1 md:grid-cols-3 gap-3 lg:px-5'>
