@@ -1,11 +1,5 @@
-import type { Metadata } from 'next';
 import { inter } from '@/config/fonts';
 import { Footer, SideMenu, TopMenu } from '@/components';
-
-export const metadata: Metadata = {
-  title: 'Teslo Shop',
-  description: 'Layout teslo shop',
-};
 
 export default function ShopLayout ({ children }: {children: React.ReactNode;}) {
   return (
