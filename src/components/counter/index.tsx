@@ -5,7 +5,7 @@ import { IoAddOutline, IoRemoveOutline } from 'react-icons/io5';
 
 interface Props {
     quantity: number;
-    stock: number;
+    stock?: number;
     onQuantity: (value: number) => void;
 }
 
