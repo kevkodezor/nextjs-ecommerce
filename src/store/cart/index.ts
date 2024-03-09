@@ -8,8 +8,7 @@ interface State {
 }
 
 export const useCartStore = create<State>()(
-    // persist
-    (set, get) => ({
+    persist((set, get) => ({
         cart: [],
         addProduct: (product: CartProduct) => {
             const { cart } = get();
@@ -18,17 +17,18 @@ export const useCartStore = create<State>()(
             );
 
             if (!productExist) {
-                set({ cart: [...cart, product ] });
+                set({ cart: [...cart, product] });
                 return;
             }
 
             const updateProductExist = cart.map(item => {
                 if (item.id === product.id && item.size === product.size) {
-                    return {...item, quantity: item.quantity + product.quantity}
+                    return { ...item, quantity: item.quantity + product.quantity }
                 }
                 return item;
             });
             set({ cart: updateProductExist });
         }
-    })
+    }) , { name: 'shop-cart' })
+
 )
