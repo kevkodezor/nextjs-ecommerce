@@ -2,12 +2,13 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 import { Counter } from '@/components';
 import { useCartStore } from '@/store'
-import Link from 'next/link';
 
 export const ItemsCart = () => {
 
+    const onUpdateItems = useCartStore(state => state.updateItemsCart);
     const productsCart = useCartStore(state => state.cart);
     const [loaded, setLoaded] = useState(false);
 
@@ -35,7 +36,7 @@ export const ItemsCart = () => {
                         <p>$ {product.price} - {product.size} </p>
                         <Counter
                             quantity={product.quantity}
-                            onQuantity={() => {}}
+                            onQuantity={(quantity) => onUpdateItems(product, quantity)}
                         />
                         <button className='bg-gray-300 font-bold rounded-md p-1'>Remover</button>
                     </div>
