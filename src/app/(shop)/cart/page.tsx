@@ -2,9 +2,10 @@ import Link from 'next/link';
 import { redirect } from 'next/navigation';
 import { Title } from '@/components';
 import { ItemsCart } from './items';
+import { Summary } from './summary';
 
 
-export default function Cart () {
+export default function Cart() {
 
     // redirect('/empty');
 
@@ -17,37 +18,23 @@ export default function Cart () {
                     <div className='flex flex-col gap-3'>
                         <span className='text-xl'>Agregar más productos</span>
                         <Link href='/' className='underline'>Seguir comprando</Link>
-
                         <ItemsCart />
                     </div>
 
                     <div className='bg-white rounded-xl shadow-xl p-5 h-fit'>
                         <h2 className='text-xl font-bold'>Detalle de la orden</h2>
-                        <div className='grid grid-cols-2'>
-                            <span>No. Productos</span>
-                            <span className='text-right'>9</span>
-
-                            <span>Subtotal</span>
-                            <span className='text-right'>$ 15</span>
-
-                            <span>IVA</span>
-                            <span className='text-right'>$ 5</span>
-
-                            <span className='text-2xl mt-5'>Total</span>
-                            <span className='text-2xl mt-5 text-right'>$ 20</span>
-                        </div>
-
+                        <Summary />
                         <div className='mt-5'>
                             <Link
                                 className='flex btn-primary justify-center'
                                 href='/checkout/address'>
-                                    Check
-                                </Link>
+                                Check
+                            </Link>
                         </div>
                     </div>
 
                 </div>
             </div>
-        </div> 
+        </div>
     );
 }
