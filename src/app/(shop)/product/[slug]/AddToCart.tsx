@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { Counter, Selector } from '@/components';
 import type { CartProduct, Product, Size } from '@/interfaces';
 import { useCartStore } from '@/store';
+import clsx from 'clsx';
 
 interface Props {
     product: Product;
@@ -14,7 +15,7 @@ export const AddToCart = ({ product }: Props) => {
     const onAddProduct = useCartStore(state => state.addProduct);
 
     const [size, setSize] = useState<Size | undefined>();
-    const [quantity, setQuantity] = useState<number>(0)
+    const [quantity, setQuantity] = useState<number>(1)
     const [posted, setPosted] = useState(false);
 
     const onAdd = () => {
@@ -26,6 +27,7 @@ export const AddToCart = ({ product }: Props) => {
             title: product.title,
             slug: product.slug,
             price: product.price,
+            inStock: product.inStock,
             image: product.images[0],
             size: size,
             quantity: quantity,
@@ -33,7 +35,7 @@ export const AddToCart = ({ product }: Props) => {
 
         onAddProduct(productsCart);
         setSize(undefined);
-        setQuantity(0);
+        setQuantity(1);
         setPosted(false);
     };
 
@@ -46,7 +48,7 @@ export const AddToCart = ({ product }: Props) => {
             />
             {posted && !size && (
                 <p className='text-red-600 font-semibold fade-in'>
-                    ¡Por favor, seleccione una talla
+                    ¡Por favor, seleccione una talla!
                 </p>
             )}
             <Counter
@@ -55,7 +57,14 @@ export const AddToCart = ({ product }: Props) => {
                 stock={product.inStock}
             />
 
-            <button onClick={onAdd} className='btn-primary'>
+            <button
+                onClick={onAdd}
+                className={clsx(
+                    'btn-primary',
+                    { 'btn-secondary disabled:pointer-events-none hover: none': quantity === 0 }
+                )}
+                disabled={quantity === 0}
+            >
                 Agregar al carrito
             </button>
         </>
