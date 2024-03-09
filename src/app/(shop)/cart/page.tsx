@@ -1,14 +1,10 @@
 import Link from 'next/link';
-import { redirect } from 'next/navigation';
 import { Title } from '@/components';
 import { ItemsCart } from './items';
 import { Summary } from './summary';
 
 
 export default function Cart() {
-
-    // redirect('/empty');
-
     return (
         <div className='flex justify-center items-center'>
             <div className='flex flex-col w-[1000px] rounded-md p-5'>
@@ -24,13 +20,6 @@ export default function Cart() {
                     <div className='bg-white rounded-xl shadow-xl p-5 h-fit'>
                         <h2 className='text-xl font-bold'>Detalle de la orden</h2>
                         <Summary />
-                        <div className='mt-5'>
-                            <Link
-                                className='flex btn-primary justify-center'
-                                href='/checkout/address'>
-                                Check
-                            </Link>
-                        </div>
                     </div>
 
                 </div>
