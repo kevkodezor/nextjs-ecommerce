@@ -18,7 +18,7 @@ export const TopMenu = () => {
     }, []);
 
     return (
-        <nav className='flex px-5 justify-between items-center w-full p-2'>
+        <nav className='sticky top-0 flex px-5 justify-between items-center w-full p-2 z-10 bg-phantom-dark text-white'>
 
             <div>
                 <Link href='/'>
@@ -30,13 +30,13 @@ export const TopMenu = () => {
             </div>
 
             <div className='hidden sm:block'>
-                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-300' href='/category/men'>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-500' href='/category/men'>
                     Hombres
                 </Link>
-                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-300' href='/category/women'>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-500' href='/category/women'>
                     Mujeres
                 </Link>
-                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-300' href='/category/kid'>
+                <Link className='m-2 p-2 rounded-md transition-all hover:bg-gray-500' href='/category/kid'>
                     Niños
                 </Link>
             </div>
@@ -56,7 +56,7 @@ export const TopMenu = () => {
                     </div>
                 </Link>
                 <button
-                    className='m-2 p-2 rounded-md transition-all hover:bg-gray-100'
+                    className='m-2 p-2 rounded-md transition-all hover:bg-gray-500'
                     onClick={menuOpen}
                 >
                     Menu

@@ -3,7 +3,7 @@ import { titleFont } from "@/config/fonts";
 
 export const Footer = () => {
     return (
-        <footer className='flex w-full justify-center items-center text-xs h-[50px] bg-phantom-dark text-white'>
+        <footer className='fixed bottom-0 flex w-full justify-center items-center text-xs h-[25px] bg-phantom-dark text-white z-20'>
             <Link href='/'>
                 <span className={`${titleFont.className} antialiased font-bold`}>Teslo </span>
                 <span>| Shop </span>

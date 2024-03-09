@@ -8,8 +8,10 @@ import { useCartStore } from '@/store'
 
 export const ItemsCart = () => {
 
-    const onUpdateItems = useCartStore(state => state.updateItemsCart);
     const productsCart = useCartStore(state => state.cart);
+    const onUpdateItems = useCartStore(state => state.updateItemsCart);
+    const onDeleteItems = useCartStore(state => state.deleteItemCart);
+
     const [loaded, setLoaded] = useState(false);
 
     useEffect(() => {
@@ -17,6 +19,8 @@ export const ItemsCart = () => {
     }, []);
 
     if (!loaded) return <p>Cargando carrito...</p>;
+
+    if (productsCart.length === 0) return <p>No hay productos :( </p>
 
     return (
         <>
@@ -36,9 +40,17 @@ export const ItemsCart = () => {
                         <p>$ {product.price} - {product.size} </p>
                         <Counter
                             quantity={product.quantity}
-                            onQuantity={(quantity) => onUpdateItems(product, quantity)}
+                            onQuantity={(quantity) => {
+                                onUpdateItems(product, quantity);
+                                if (quantity === 0) onDeleteItems(product);
+                            }}
                         />
-                        <button className='bg-gray-300 font-bold rounded-md p-1'>Remover</button>
+                        <button
+                            onClick={() => onDeleteItems(product)}
+                            className='bg-gray-300 font-bold rounded-md p-1'
+                        >
+                                Remover
+                            </button>
                     </div>
                 </div>
             ))}
