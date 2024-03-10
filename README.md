@@ -3,7 +3,7 @@
 Actualización de proyecto con respecto a la ultima versión de NextJs. Se construyo una Ecommerce Page la cual se conecta
 a una DB (Postgres) en la nube desplegada en [Vercel](https://vercel.com/). 
 
-Así com también el uso de [Prisma](https://www.prisma.io/) para el modelado de datos, migración de esquemas y consulta a la base de datos. Cuenta con autenticación y multiples funcionalidades las cuales se podran apreciar colnando el proyecto o ingresando al siguiente url [URLporDefinir].
+Así com también el uso de [Prisma](https://www.prisma.io/) para el modelado de datos, migración de esquemas y consulta a la base de datos. Cuenta con autenticación y multiples funcionalidades las cuales se podran apreciar colnando el proyecto o ingresando al siguiente url [Teslo|Shop](https://nextjs-ecommerce-kevkode.vercel.app/).
 
 ## Correr en dev
 
