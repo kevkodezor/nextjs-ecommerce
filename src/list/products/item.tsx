@@ -25,7 +25,7 @@ export const ItemProduct = ({ product }:Props) => {
                 onMouseLeave={() => setDisplayImg(product.images[0])}
             />
             <Link
-                className='p-4 flex flex-col bg-gray-200 hover:bg-gray-300'
+                className='p-4 flex flex-col bg-phantom-dark text-neutral-200 hover:bg-gray-800'
                 href={`/product/${product.slug}`}
             >
                 <text className='text-md'>{product.title.length < 30 ? product.title : `${product.title.slice(0, 25)}...`}</text>

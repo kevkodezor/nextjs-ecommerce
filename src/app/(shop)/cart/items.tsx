@@ -25,7 +25,7 @@ export const ItemsCart = () => {
     return (
         <>
             {productsCart?.map(product => (
-                <div key={`${product.slug}-${product.size}`} className='flex gap-3'>
+                <div key={`${product.slug}-${product.size}`} className='flex gap-3 fade-in'>
                     <Image
                         src={`/products/${product.image}`}
                         height={100}
