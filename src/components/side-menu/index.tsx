@@ -1,5 +1,6 @@
 'use client'
 
+import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import {
@@ -14,6 +15,8 @@ export const SideMenu = () => {
 
     const isMenu = useUiStore(state => state.openMenu);
     const menuClose = useUiStore(state => state.isClose);
+
+    const { data: session } = useSession();
 
     return (
         <>
