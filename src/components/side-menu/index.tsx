@@ -4,8 +4,8 @@ import { useSession } from 'next-auth/react';
 import Link from 'next/link';
 import clsx from 'clsx';
 import {
-    IoCloseOutline, IoLogInOutline, IoLogOutOutline, 
-    IoPeopleCircle, IoPersonOutline, IoSearchOutline, 
+    IoCloseOutline, IoLogInOutline, IoLogOutOutline,
+    IoPeopleCircle, IoPersonOutline, IoSearchOutline,
     IoShirtOutline, IoTicketOutline
 } from 'react-icons/io5';
 import { useUiStore } from '@/store';
@@ -17,6 +17,7 @@ export const SideMenu = () => {
     const menuClose = useUiStore(state => state.isClose);
 
     const { data: session } = useSession();
+    const isAuth = !!session?.user;
 
     return (
         <>
@@ -29,7 +30,7 @@ export const SideMenu = () => {
 
             <nav className={
                 clsx('fixed p-5 right-0 top-0 sm:w-full lg:w-[30%] h-screen bg-white z-30 shadow-2xl transform transition-all duration-300', {
-                    'translate-x-full' : !isMenu
+                    'translate-x-full': !isMenu
                 })
             }>
                 <IoCloseOutline
@@ -54,21 +55,22 @@ export const SideMenu = () => {
                     <IoTicketOutline size={20} />
                     <span className='ml-3 text-lg'>Ordenes</span>
                 </Link>
-                <Link href='/auth/login' onClick={menuClose} className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoLogInOutline size={20} />
-                    <span className='ml-3 text-lg'>Ingresar</span>
-                </Link>
-                <Link
-                    href='/'
-                    onClick={() => {
-                        logout();
-                        menuClose();
-                    }} 
-                    className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'
-                >
-                    <IoLogOutOutline size={20} />
-                    <span className='ml-3 text-lg'>Cerrar sesión</span>
-                </Link>
+
+                {!isAuth && (
+                    <Link href='/auth/login' onClick={menuClose} className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                        <IoLogInOutline size={20} />
+                        <span className='ml-3 text-lg'>Ingresar</span>
+                    </Link>
+                )}
+                {isAuth && (
+                    <button
+                        onClick={() => logout()}
+                        className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all w-full'
+                    >
+                        <IoLogOutOutline size={20} />
+                        <span className='ml-3 text-lg'>Cerrar sesión</span>
+                    </button>
+                )}
 
                 <div className='w-full h-px bg-gray-200 my-10' />
 

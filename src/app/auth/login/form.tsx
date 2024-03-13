@@ -16,7 +16,7 @@ export const LoginForm = () => {
         if (state === 'Success') {
             router.replace('/');
         }
-    }, []);
+    });
     
     return (
         <form action={dispatch} className='flex flex-col'>

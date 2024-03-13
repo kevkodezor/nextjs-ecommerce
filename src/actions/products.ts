@@ -11,7 +11,7 @@ interface Options {
 }
 
 export const pagination = async ({ page = 1, take = 12, gender }:Options) => {
-
+    sleep(5);
     if (isNaN(Number(page))) page = 1;
     if (page < 1) page = 1;
 
