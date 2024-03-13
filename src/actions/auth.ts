@@ -14,8 +14,10 @@ export async function authenticate(
         });
         return 'Success';
     } catch (error) {
-        console.log(error);
-        return 'CredentialsSignin'
+        // if ((error as any).type === 'CredentialsSignin') {
+        //     return 'CredentialsSignin';
+        // }
+        return 'Error desconocido'
     }
 }
 

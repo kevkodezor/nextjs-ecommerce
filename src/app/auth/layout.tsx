@@ -8,7 +8,9 @@ export const metadata: Metadata = {
 	description: 'Authentication users',
 };
 
-export default async function AuthLayout({ children }: Readonly<{ children: React.ReactNode; }>) {
+export default async function AuthLayout({ children }: Readonly<{
+	children: React.ReactNode;
+}>) {
 
 	const session = await auth();
 	if (session?.user) redirect('/');
