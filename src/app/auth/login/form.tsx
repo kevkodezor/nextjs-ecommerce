@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useFormState } from 'react-dom';
 import { authenticate } from '@/actions';
+import { IoInformationCircleOutline } from 'react-icons/io5';
 
 export const LoginForm = () => {
 
@@ -20,11 +21,22 @@ export const LoginForm = () => {
 
             <label htmlFor='email'>Contraseña</label>
             <input
-                className='px-3 py-2 border bg-gray-200 rounded mb-5'
+                className='px-3 py-2 border bg-gray-200 rounded'
                 type='password'
                 name='password'
             />
-
+            <div
+                className="flex flex-row h-8 items-end space-x-1 justify-center font-light m-2"
+                aria-live="polite"
+                aria-atomic="true"
+            >
+                {state && (
+                    <>
+                        <IoInformationCircleOutline className="h-5 w-5 text-red-500" />
+                        <p className="text-sm text-red-500">{state}</p>
+                    </>
+                )}
+            </div>
             <button
                 type='submit'
                 className='btn-primary'>
