@@ -42,7 +42,7 @@ export const SideMenu = () => {
                     />
                 </div>
 
-                <Link href='/' className='flex items-center mt-12 p-2 hover:bg-gray-100 rounded transition-all'>
+                <Link href='/profile' onClick={menuClose} className='flex items-center mt-12 p-2 hover:bg-gray-100 rounded transition-all'>
                     <IoPersonOutline size={20} />
                     <span className='ml-3 text-lg'>Perfil</span>
                 </Link>
