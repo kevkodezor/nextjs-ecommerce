@@ -1,7 +1,7 @@
 'use server'
 
 import { AuthError } from 'next-auth';
-import { signIn } from '@/auth.config';
+import { signIn, signOut } from '@/auth.config';
 
 export async function authenticate(
     prevState: string | undefined,
@@ -17,4 +17,8 @@ export async function authenticate(
         console.log(error);
         return 'CredentialsSignin'
     }
+}
+
+export const logout = async () => {
+    await signOut();
 }

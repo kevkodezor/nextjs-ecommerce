@@ -1,2 +1,2 @@
 export * from './products'
-export * from './login'
+export * from './auth'

@@ -8,6 +8,7 @@ import {
     IoShirtOutline, IoTicketOutline
 } from 'react-icons/io5';
 import { useUiStore } from '@/store';
+import { logout } from '@/actions';
 
 export const SideMenu = () => {
 
@@ -54,7 +55,14 @@ export const SideMenu = () => {
                     <IoLogInOutline size={20} />
                     <span className='ml-3 text-lg'>Ingresar</span>
                 </Link>
-                <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                <Link
+                    href='/'
+                    onClick={() => {
+                        logout();
+                        menuClose();
+                    }} 
+                    className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'
+                >
                     <IoLogOutOutline size={20} />
                     <span className='ml-3 text-lg'>Cerrar sesión</span>
                 </Link>
