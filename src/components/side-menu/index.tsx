@@ -5,7 +5,7 @@ import Link from 'next/link';
 import clsx from 'clsx';
 import {
     IoCloseOutline, IoLogInOutline, IoLogOutOutline,
-    IoPeopleCircle, IoPersonOutline, IoSearchOutline,
+    IoPeopleCircle, IoPersonAddOutline, IoPersonOutline, IoSearchOutline,
     IoShirtOutline, IoTicketOutline
 } from 'react-icons/io5';
 import { useUiStore } from '@/store';
@@ -62,14 +62,21 @@ export const SideMenu = () => {
                 )}
 
                 {!isAuth && (
-                    <Link href='/auth/login' onClick={menuClose} 
-                    className={clsx(
-                        'flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all',
-                        { 'mt-9': !isAuth }
-                    )}>
-                        <IoLogInOutline size={20} />
-                        <span className='ml-3 text-lg'>Ingresar</span>
-                    </Link>
+                    <>
+                        <Link href='/auth/login' onClick={menuClose}
+                            className={clsx(
+                                'flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all',
+                                { 'mt-9': !isAuth }
+                            )}>
+                            <IoLogInOutline size={20} />
+                            <span className='ml-3 text-lg'>Ingresar</span>
+                        </Link>
+                        <Link href='/auth/register' onClick={menuClose}
+                            className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoPersonAddOutline size={20} />
+                            <span className='ml-3 text-lg'>Registrarse</span>
+                        </Link>
+                    </>
                 )}
                 {isAuth && (
                     <button

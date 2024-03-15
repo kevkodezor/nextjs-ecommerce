@@ -23,7 +23,7 @@ export const authConfig: NextAuthConfig = {
         Credentials({
             async authorize(credentials) {
                 const parsedCredentials = z
-                    .object({ email: z.string().email(), password: z.string().min(5) })
+                    .object({ email: z.string().email(), password: z.string().min(5).max(6) })
                     .safeParse(credentials);
 
                 if (!parsedCredentials.success) return null;
