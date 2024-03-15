@@ -9,6 +9,16 @@ export const authConfig: NextAuthConfig = {
         signIn: '/auth/login',
         newUser: '/auth/register'
     },
+    callbacks: {
+        jwt ({ token, user }) {
+            if (user) token.data = user;
+            return token;
+        },
+        session ({ session, token, user }) {
+            session.user = token.data as any;
+            return session;
+        },
+    },
     providers: [
         Credentials({
             async authorize(credentials) {
@@ -27,7 +37,6 @@ export const authConfig: NextAuthConfig = {
                 if (!bcrypt.compareSync(password, user.password)) return null;
 
                 const { password: _, ...rest } = user;
-                console.log({ rest });
                 
                 return rest;
             },
