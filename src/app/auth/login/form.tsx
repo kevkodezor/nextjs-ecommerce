@@ -2,20 +2,16 @@
 
 import Link from 'next/link';
 import { useEffect } from 'react';
-import { useRouter } from 'next/navigation';
 import { useFormState } from 'react-dom';
 import { authenticate } from '@/actions';
 import { IoInformationCircleOutline } from 'react-icons/io5';
 
 export const LoginForm = () => {
 
-    const router = useRouter()
     const [state, dispatch] = useFormState(authenticate, undefined);
 
     useEffect(() => {
-        if (state === 'Success') {
-            router.replace('/');
-        }
+        if (state === 'Success') window.location.replace('/');
     });
     
     return (

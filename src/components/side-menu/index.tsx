@@ -18,6 +18,7 @@ export const SideMenu = () => {
 
     const { data: session } = useSession();
     const isAuth = !!session?.user;
+    const isAdmin = session?.user.role === 'admin';
 
     return (
         <>
@@ -47,17 +48,25 @@ export const SideMenu = () => {
                     />
                 </div>
 
-                <Link href='/profile' onClick={menuClose} className='flex items-center mt-12 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoPersonOutline size={20} />
-                    <span className='ml-3 text-lg'>Perfil</span>
-                </Link>
-                <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoTicketOutline size={20} />
-                    <span className='ml-3 text-lg'>Ordenes</span>
-                </Link>
+                {isAuth && (
+                    <>
+                        <Link href='/profile' onClick={menuClose} className='flex items-center mt-12 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoPersonOutline size={20} />
+                            <span className='ml-3 text-lg'>Perfil</span>
+                        </Link>
+                        <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoTicketOutline size={20} />
+                            <span className='ml-3 text-lg'>Mis Ordenes</span>
+                        </Link>
+                    </>
+                )}
 
                 {!isAuth && (
-                    <Link href='/auth/login' onClick={menuClose} className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                    <Link href='/auth/login' onClick={menuClose} 
+                    className={clsx(
+                        'flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all',
+                        { 'mt-9': !isAuth }
+                    )}>
                         <IoLogInOutline size={20} />
                         <span className='ml-3 text-lg'>Ingresar</span>
                     </Link>
@@ -72,20 +81,24 @@ export const SideMenu = () => {
                     </button>
                 )}
 
-                <div className='w-full h-px bg-gray-200 my-10' />
 
-                <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoShirtOutline size={20} />
-                    <span className='ml-3 text-lg'>Productos</span>
-                </Link>
-                <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoTicketOutline size={20} />
-                    <span className='ml-3 text-lg'>Ordenes</span>
-                </Link>
-                <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
-                    <IoPeopleCircle size={20} />
-                    <span className='ml-3 text-lg'>Usuarios</span>
-                </Link>
+                {isAdmin && (
+                    <>
+                        <div className='w-full h-px bg-gray-200 my-10' />
+                        <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoShirtOutline size={20} />
+                            <span className='ml-3 text-lg'>Productos</span>
+                        </Link>
+                        <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoTicketOutline size={20} />
+                            <span className='ml-3 text-lg'>Ordenes</span>
+                        </Link>
+                        <Link href='/' className='flex items-center mt-2 p-2 hover:bg-gray-100 rounded transition-all'>
+                            <IoPeopleCircle size={20} />
+                            <span className='ml-3 text-lg'>Usuarios</span>
+                        </Link>
+                    </>
+                )}
 
             </nav>
         </>

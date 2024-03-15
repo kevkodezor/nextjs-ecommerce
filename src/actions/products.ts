@@ -43,7 +43,9 @@ export const pagination = async ({ page = 1, take = 12, gender }:Options) => {
             }))
         }
     } catch (error) {
-        throw new Error('No se cargo la imagen')
+        console.log(error);
+        
+        throw new Error('No se cargo la imagen');
     }
 }
 
