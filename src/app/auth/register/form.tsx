@@ -1,9 +1,11 @@
 'use client'
 
-import clsx from 'clsx';
+import { useState } from 'react';
 import Link from 'next/link';
+import clsx from 'clsx';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import { IoInformationCircleOutline } from 'react-icons/io5';
+import { registerUser } from '@/actions';
 
 type InputsForm = {
     name: string;
@@ -13,11 +15,17 @@ type InputsForm = {
 
 export const RegisterForm = () => {
 
+    const [errorSms, setErrorSms] = useState('');
     const { register, handleSubmit, formState: { errors } } = useForm<InputsForm>();
 
     const onSubmit: SubmitHandler<InputsForm> = async (data) => {
         const { name, email, password } = data;
-        console.log(name, email, password);
+        const res = await registerUser(name, email, password);
+        if (!res.ok) {
+            setErrorSms(res.sms);
+            return;
+        };
+
     }
 
     return (
@@ -65,6 +73,7 @@ export const RegisterForm = () => {
             <button name='registrar' className='btn-primary'>
                 Registrar
             </button>
+            <span className='text-red-500 text-center mt-5'>{errorSms}</span>
 
             <div className='flex items-center my-5'>
                 <div className='flex-1 border-t border-gray-500'></div>
