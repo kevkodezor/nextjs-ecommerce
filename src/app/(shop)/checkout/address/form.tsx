@@ -1,15 +1,42 @@
+'use client'
 
-import Link from 'next/link'
+import clsx from 'clsx';
+import { useForm } from 'react-hook-form'
+
+type Inputs = {
+    name: string;
+    lastname: string;
+    address: string;
+    addressTwo?: string;
+    zipcode: string;
+    city: string;
+    country: string;
+    phone: string;
+    remember: boolean;
+}
 
 export const AddressForm = () => {
+
+    const { register, handleSubmit, formState: { isValid } } = useForm<Inputs>({
+        defaultValues: {
+            //
+        }
+    });
+
+    const onSubmit = (data:Inputs) => {
+        console.log(data);
+        
+    }
+
     return (
-        <div className='grid grid-cols-1 gap-2 sm:gap-5 sm:grid-cols-2'>
+        <form onSubmit={handleSubmit(onSubmit)} className='grid grid-cols-1 gap-2 sm:gap-5 sm:grid-cols-2'>
 
             <div className='flex flex-col mb-2'>
                 <span>Nombres</span>
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('name', { required: true })}    
                 />
             </div>
 
@@ -18,6 +45,7 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('lastname', { required: true })} 
                 />
             </div>
 
@@ -26,6 +54,7 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('address', { required: true })}
                 />
             </div>
 
@@ -34,6 +63,7 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('addressTwo')} 
                 />
             </div>
 
@@ -43,6 +73,7 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('zipcode', { required: true })}
                 />
             </div>
 
@@ -51,6 +82,7 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('city', { required: true })}
                 />
             </div>
 
@@ -58,6 +90,7 @@ export const AddressForm = () => {
                 <span>País</span>
                 <select
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('country', { required: true })}
                 >
                     <option value=''>[Seleccione]</option>
                     <option value='CRI'>Costa Rica</option>
@@ -69,19 +102,24 @@ export const AddressForm = () => {
                 <input
                     type='text'
                     className='p-2 border rounded-md bg-gray-200 border-slate-400'
+                    {...register('phone', { required: true })}
                 />
             </div>
 
-            <span className='flex items-center'>
-                <input type='checkbox' className='mr-2 fade-in' /> ¿Recordar dirección?
+            <span className='flex items-center' >
+                <input type='checkbox' className='mr-2 fade-in' {...register('remember')} /> ¿Recordar dirección?
             </span>
 
-            <Link
-                href='/checkout'
-                className='btn-primary flex w-full justify-center '>
+            <button
+                type='submit'
+                disabled={!isValid}
+                className={clsx({
+                    'btn-primary': isValid,
+                    'btn-disabled bg-gray-400 rounded-md p-2': !isValid
+                })}>
                 Siguiente
-            </Link>
+            </button>
 
-        </div>
+        </form>
     )
 }
