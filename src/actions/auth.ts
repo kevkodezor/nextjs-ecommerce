@@ -52,3 +52,13 @@ export const registerUser = async (name:string, email:string, password:string) =
         }
     }
 }
+
+export const login = async (email: string, password: string) => {
+    try {
+        await signIn('credentials', { email, password });
+        return { ok: true };
+    } catch (error) {
+        console.log(error);
+        return { ok: false, sms: 'No se pudo iniciar sesión' };
+    }
+}
