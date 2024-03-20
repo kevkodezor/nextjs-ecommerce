@@ -19,6 +19,7 @@ export async function authenticate(
         // if ((error as any).type === 'CredentialsSignin') {
         //     return 'CredentialsSignin';
         // }
+        console.log({ error });
         return 'Error desconocido'
     }
 }

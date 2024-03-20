@@ -35,12 +35,16 @@ export const LoginForm = () => {
                 aria-live="polite"
                 aria-atomic="true"
             >
-                {state && (
+                {state === 'Success' ? 
                     <>
+                        <IoInformationCircleOutline className="h-5 w-5 text-green-500" />
+                        <p className="text-sm text-green-500">{state}</p>
+                    </>
+                    : <>
                         <IoInformationCircleOutline className="h-5 w-5 text-red-500" />
                         <p className="text-sm text-red-500">{state}</p>
                     </>
-                )}
+                }
             </div>
             <button
                 type='submit'
